@@ -14,9 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('users.index');
+});
+
+Route::get('/admin', function () {
+    return view('admin.index');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/save', [App\Http\Controllers\UserController::class, 'save'])->name('save');
+Route::get('/profile/{id}', [App\Http\Controllers\UserController::class, 'profile'])->name('profile');
